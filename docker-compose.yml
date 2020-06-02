@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: containers/local/app
+      dockerfile: Dockerfile
+    command: dev_scripts/start_app.sh
+    working_dir: /usr/src/app
+    environment:
+      DATABASE_HOST: db
+      DATABASE_PORT: 3306
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD:
+      DATABASE_NAME: test-db_development
+    volumes:
+      - .:/usr/src/app
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    ports:
+      - 5306:3306
+    volumes:
+      - db-volume:/var/lib/mysql
+volumes:
+  db-volume:
