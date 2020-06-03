@@ -16,7 +16,7 @@ echo 'CREATE DATABASE IF NOT EXISTS `test-db_development` DEFAULT CHARACTER SET 
 
 migration 作るとき
 ```
-migrate create -ext sql -dir db/migrations/create_hoge -seq create_hoges_table
+migrate create -ext sql -dir db/migrations -seq create_hoges_table
 ```
 
 ```

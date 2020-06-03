@@ -10,3 +10,4 @@ RUN apt-get update && apt-get -y install \
         --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
+RUN go get -u -t github.com/volatiletech/sqlboiler github.com/volatiletech/sqlboiler/drivers/sqlboiler-mysql

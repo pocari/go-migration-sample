@@ -1,0 +1,13 @@
+pkgname  = "models"
+output   = "/models"
+wipe     = true
+no_tests = true
+
+[mysql]
+  dbname    = "test-db_development"
+  host      = "db"
+  port      = 3306
+  user      = "root"
+  pass      = ""
+  sslmode   = "false"
+  whitelist = ["hoges", "foos"]
