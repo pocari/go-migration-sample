@@ -25,9 +25,11 @@ func main() {
 	// select * from foos where field1 in ('field1-2', field1-3') order by field1 desc
 	fooList, err := models.Foos(
 		models.FooWhere.Field1.IN([]string{
-			"field1-2",
 			"field1-3",
 		}),
+		qm.Or(
+			"field1 = ?", "field1-1",
+		),
 		qm.OrderBy(db.OrderByDesc(models.FooColumns.Field1)),
 	).All(context.Background(), boil.GetContextDB())
 
