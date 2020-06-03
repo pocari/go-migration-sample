@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"migration-sample/infra/db"
+	"migration-sample/infra/qmex"
 	"migration-sample/models"
 	"os"
 
@@ -30,7 +31,7 @@ func main() {
 		qm.Or(
 			"field1 = ?", "field1-1",
 		),
-		qm.OrderBy(db.OrderByDesc(models.FooColumns.Field1)),
+		qm.OrderBy(qmex.Desc(models.FooColumns.Field1)),
 	).All(context.Background(), boil.GetContextDB())
 
 	if err != nil {
