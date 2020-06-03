@@ -1,5 +1,5 @@
 pkgname  = "models"
-output   = "/models"
+output   = "models"
 wipe     = true
 no_tests = true
 
