@@ -21,10 +21,6 @@ func init() {
 	boil.DebugWriter = os.Stdout
 }
 
-func OrderByDesc(column string) string {
-	return fmt.Sprintf("%s desc", column)
-}
-
 func main() {
 	// select * from foos where field1 in ('field1-2', field1-3') order by field1 desc
 	fooList, err := models.Foos(
@@ -32,7 +28,7 @@ func main() {
 			"field1-2",
 			"field1-3",
 		}),
-		qm.OrderBy(OrderByDesc(models.FooColumns.Field1)),
+		qm.OrderBy(db.OrderByDesc(models.FooColumns.Field1)),
 	).All(context.Background(), boil.GetContextDB())
 
 	if err != nil {
@@ -40,6 +36,6 @@ func main() {
 	}
 
 	for i, foo := range fooList {
-		fmt.Printf("%02d: %+v\n", i, foo)
+		fmt.Printf("%2d: %+v\n", i+1, foo)
 	}
 }
