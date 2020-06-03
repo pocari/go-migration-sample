@@ -43,3 +43,10 @@ insert into foos (field1, created_at, updated_at) values ('field1-2', now(), now
 insert into foos (field1, created_at, updated_at) values ('field1-3', now(), now());
 ```
 
+# sample driver
+
+```
+# foosテーブルから何件か取得
+go run cmd/sqlboiler-check/main.go
+```
+
